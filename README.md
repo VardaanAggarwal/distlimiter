@@ -28,11 +28,11 @@ Designed for high-concurrency API Gateway environments with sub-millisecond over
 
 ```mermaid
 graph TD
-    Client[HTTP Client / Consumer] -->|X-API-Key / Client IP| Middleware[HTTP Middleware Layer]
-    Middleware -->|Extract Client Key| LimiterEngine{Rate Limiter Engine Interface}
+    Client["HTTP Client / Consumer"] -->|X-API-Key / Client IP| Middleware["HTTP Middleware Layer"]
+    Middleware -->|Extract Client Key| LimiterEngine{"Rate Limiter Engine Interface"}
     
-    LimiterEngine -->|Strategy: Token Bucket| TB[Token Bucket Engine]
-    LimiterEngine -->|Strategy: Sliding Window| SW[Sliding Window Counter]
+    LimiterEngine -->|Strategy: Token Bucket| TB["Token Bucket Engine"]
+    LimiterEngine -->|Strategy: Sliding Window| SW["Sliding Window Counter"]
 
     TB -->|Quota Available| OK["200 OK (Upstream Resource)"]
     TB -->|Quota Exhausted| Blocked["429 Too Many Requests"]
